@@ -1,0 +1,64 @@
+<!-- forms.js.html  -->
+
+<script>
+
+/* ===== OBTENER RESPONSABLES SELECCIONADOS ===== */
+
+function obtenerResponsables(){
+
+const checks = document.querySelectorAll('#listaResponsables input:checked');
+
+let responsables = [];
+
+checks.forEach(c=>{
+responsables.push(c.value);
+});
+
+return responsables.join(", ");
+
+}
+
+
+/* ===== GUARDAR ACUERDO ===== */
+
+async function guardarAcuerdo(){
+
+const responsables = obtenerResponsables();
+
+if(!responsables){
+alert("Selecciona al menos un responsable");
+return;
+}
+
+const data = {
+
+tipoRegistro: document.getElementById("tipoRegistro").value,
+tema: document.getElementById("tema").value,
+descripcion: document.getElementById("descripcion").value,
+origen: document.getElementById("origen").value,
+responsable: responsables,
+areaResponsable: document.querySelector("#area_responsable").tomselect.getValue().join(", "),
+fechaAcuerdo: document.getElementById("fechaAcuerdo").value,
+fechaCompromiso: document.getElementById("fechaCompromiso").value,
+estatus: document.getElementById("estatus").value,
+prioridad: document.getElementById("prioridad").value,
+riesgos: document.getElementById("riesgos").value,
+observaciones: document.getElementById("observaciones").value
+
+};
+
+try{
+
+await API.guardarAcuerdo(data);
+
+alert("Registro guardado");
+
+}catch(e){
+
+alert(e.message);
+
+}
+
+}
+
+</script>

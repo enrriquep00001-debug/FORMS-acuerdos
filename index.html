@@ -1,0 +1,49 @@
+<!-- index.html  -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <?!= include('style_main'); ?>
+</head>
+<body>
+
+<div id="login">
+  <?!= include('login'); ?>
+</div>
+
+<div id="portal" style="display:none">
+
+  <?!= include('menu_top'); ?>
+
+  <div class="container">
+
+    <div id="seccion_inicio">
+      <?!= include('portal_home'); ?>
+    </div>
+
+    <div id="seccion_formulario" style="display:none">
+      <?!= include('page_registro'); ?>
+    </div>
+
+    <div id="seccion_historial" style="display:none">
+      <?!= include('tabla_historial'); ?>
+    </div>
+
+    <div id="seccion_reportes" style="display:none">
+      <div id="reportes_contenido"></div>
+    </div>
+
+    <div id="seccion_admin" style="display:none">
+      <div id="admin_contenido"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<?!= include('script_login'); ?>
+<?!= include('script_ui'); ?>
+
+</body>
+</html>
